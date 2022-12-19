@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WEB API", "WEB API.csproj", "{FBB15723-0E9A-4EA6-88AB-1B9D21EC7866}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.NET-CORE-WEB-API-CRUD", "ASP.NET-CORE-WEB-API-CRUD.csproj", "{FBB15723-0E9A-4EA6-88AB-1B9D21EC7866}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
