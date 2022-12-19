@@ -1,1 +1,10 @@
-# WEB-API
+# ASP.NET CORE WEB-API CRUD OPERATIONS
+
+CRUD OPERATIONS WITH ASP.NET CORE WEB API'S
+
+
+## Tech Stack
+
+**Client:** `ANGULAR` (coming soon)
+
+**Server:** `C#`, `ASP.NET CORE`, `MSSQL`
