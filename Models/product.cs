@@ -6,6 +6,7 @@ namespace WEB_API.Models
     [Table("Product")]
     public class product
     {
+        [Key]
         public int Id { get; set; }
         public string Productname { get; set; }
         [Column(TypeName = "Decimal(18,2)")]
