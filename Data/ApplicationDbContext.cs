@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WEB_API.Models;
+using WEB_API.Models.Utility;
 
 namespace WEB_API.Data
 {
@@ -12,6 +13,16 @@ namespace WEB_API.Data
         {
             base.OnModelCreating(modelBuilder);
         }
-        public DbSet<UserDetails> Users { get; set; }
+
+        public virtual DbSet<product> Products { get; set; }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(Helper.ConnectionString);
+            }
+        }
     }
 }
