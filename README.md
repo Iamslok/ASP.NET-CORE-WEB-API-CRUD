@@ -2,6 +2,15 @@
 
 CRUD OPERATIONS USING ASP.NET CORE WEB API'S
 
+# Steps to setup
+
+**Step 1:** CLONE THE REPOSITORY IN VISUAL STUDIO
+
+**Step 2:** CHANGE YOU CONNECTION STRING IN `appsettings.Development.json`
+
+**Step 3:** IN PACKAGE MANAGER CONSOLE UPDATE YOU DATABASE BY RUNNING `update-database`
+
+**Step 4:** ADD DATA IN YOUR DATABASE
 
 ## Tech Stack
 
