@@ -6,5 +6,6 @@ namespace WEB_API.Repositories.ProductReository
     {
         Task<List<ProductDTO>> GetAllProducts();
         Task<ProductDTO> GetProductById(int id);
+        Task UpdateProductById(UpdateProductDTO updateProduct);
     }
 }

@@ -11,7 +11,7 @@ namespace WEB_API.Repositories.ProductReository
         public ProductRepository(ApplicationDbContext dbcontext)
         {
             _dbcontext = dbcontext;
-        }   
+        }
 
         //To Get ALL the Products
         public async Task<List<ProductDTO>> GetAllProducts()
@@ -21,7 +21,10 @@ namespace WEB_API.Repositories.ProductReository
             {
                 ProductId = x.Id,
                 ProductName = x.Productname,
+                Description = x.Description,
                 Price = x.Price,
+                IsActive = x.IsActive,
+                IsDelete = x.IsDelete,
             }).ToListAsync();
 
             return res;
@@ -29,14 +32,46 @@ namespace WEB_API.Repositories.ProductReository
 
         public async Task<ProductDTO> GetProductById(int id)
         {
-                var res = await _dbcontext.Products.Where(x => x.Id == id).AsNoTracking().Select(x => new ProductDTO
-                {
-                    ProductId = x.Id,
-                    ProductName = x.Productname,
-                    Price = x.Price
-                }).FirstOrDefaultAsync();
+            var res = await _dbcontext.Products.Where(x => x.Id == id).AsNoTracking().Select(x => new ProductDTO
+            {
+                ProductId = x.Id,
+                ProductName = x.Productname,
+                Description = x.Description,
+                Price = x.Price,
+                IsActive = x.IsActive,
+                IsDelete = x.IsDelete,
+            }).FirstOrDefaultAsync();
 
-                return res;
+            return res;
+        }
+
+        public async Task UpdateProductById(UpdateProductDTO updateProduct)
+        {
+            if (updateProduct != null)
+            {
+                var res = await _dbcontext.Products.FirstOrDefaultAsync(x => x.Id == updateProduct.ProductId);
+                if (res != null)
+                {
+                    res.Productname = updateProduct.ProductName;
+                    res.Description = updateProduct.Description;
+                    res.Price = updateProduct.Price;
+                    res.IsActive = updateProduct.IsActive;
+                    res.IsDelete = updateProduct.IsDelete;
+                }
+                else
+                {
+                    await _dbcontext.Products.AddAsync(new Models.product
+                    {
+                        Productname = updateProduct.ProductName,
+                        Price = updateProduct.Price,
+                        Description = updateProduct.Description,    
+                        IsActive = updateProduct.IsActive,
+                        IsDelete = updateProduct.IsDelete
+                    });
+                }
+            }
+
+            await _dbcontext.SaveChangesAsync();
         }
     }
 }
