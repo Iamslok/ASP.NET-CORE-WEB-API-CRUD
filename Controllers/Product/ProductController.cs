@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WEB_API.Models;
 using WEB_API.Models.DTO;
 using WEB_API.Repositories.ProductReository;
 
@@ -48,6 +49,16 @@ namespace WEB_API.Controllers.Product
             {
                 throw;
             }
+        }
+
+        [HttpPut]
+        [Route("UpdateProductById")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UpdateProductDTO))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdateProductById(UpdateProductDTO updateProduct)
+        {
+                await _productRepository.UpdateProductById(updateProduct);
+                return Ok(updateProduct);
         }
     }
 }
